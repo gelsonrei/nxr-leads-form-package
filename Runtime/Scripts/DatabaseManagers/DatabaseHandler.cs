@@ -3,36 +3,38 @@ using SqlCipher4Unity3D;
 
 //https://github.com/praeclarum/sqlite-net/wiki
 
-
-public class DatabaseHandler
+namespace Nxr.FormLeads
 {
-
-    private static readonly string resourceFolderPath = Application.dataPath + "/Resources";
-    private string dbUri = resourceFolderPath + "/Data/" + "FortuneWheel2.db";
-    public SQLiteConnection dbConnection;
-    static public DatabaseHandler instance;
-    public static bool isDatabaseLoaded = false;
-
-    private DatabaseHandler()
+    public class DatabaseHandler
     {
-        Debug.Log(dbUri);
-        dbConnection = new SQLiteConnection(dbUri, "130366");
-    }
 
-    public static DatabaseHandler GetInstance()
-    {
-        // Se ainda não houver uma instância, crie uma
-        instance ??= new DatabaseHandler();
+        private static readonly string resourceFolderPath = Application.dataPath + "/Resources";
+        private string dbUri = resourceFolderPath + "/Data/" + "FortuneWheel2.db";
+        public SQLiteConnection dbConnection;
+        static public DatabaseHandler instance;
+        public static bool isDatabaseLoaded = false;
 
-        isDatabaseLoaded = instance != null;
+        private DatabaseHandler()
+        {
+            Debug.Log(dbUri);
+            dbConnection = new SQLiteConnection(dbUri, "130366");
+        }
 
-        return instance;
-    }
+        public static DatabaseHandler GetInstance()
+        {
+            // Se ainda não houver uma instância, crie uma
+            instance ??= new DatabaseHandler();
 
-    public void Close()
-    {
-        dbConnection.Close();
+            isDatabaseLoaded = instance != null;
+
+            return instance;
+        }
+
+        public void Close()
+        {
+            dbConnection.Close();
+        }
+
     }
 
 }
-

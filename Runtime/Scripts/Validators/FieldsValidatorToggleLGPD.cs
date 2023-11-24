@@ -2,57 +2,60 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FieldsValidatorToggleLGPD : FieldsValidator
+namespace Nxr.FormLeads
 {
-   
-    [SerializeField] Toggle toggleLGPD;
-    [SerializeField] Button buttonLGPD;
-
-    protected override void Start()
+    public class FieldsValidatorToggleLGPD : FieldsValidator
     {
-        base.Start();
-        toggleLGPD.onValueChanged.AddListener(OnTogleLGPDChaged);
-        buttonLGPD.GetComponent<Image>().color = invalidColor;
-    }
 
-    private void OnTogleLGPDChaged(bool value)
-    {
-        
-        if (toggleLGPD.isOn)
+        [SerializeField] Toggle toggleLGPD;
+        [SerializeField] Button buttonLGPD;
+
+        protected override void Start()
         {
-            buttonLGPD.GetComponent<Image>().color = validColor;
-        }
-        else
-        {
-            buttonLGPD.GetComponent<Image>().color = invalidColor;
-        }
-        ValidateField("");
-    }
-
-    protected override void ValidateField(string value)
-    {
-       
-        IsFieldValid(value);
-       
-        FormatField(value);
-    }
-
-    protected override void FormatField(string value)
-    {
-        
-    }
-
-    protected override bool IsFieldValid(string value)
-    {
-        if (!toggleLGPD.isOn)
-        {
-       
-            Debug.Log("Você precisa aceitar o stermos de privacidade!");
+            base.Start();
+            toggleLGPD.onValueChanged.AddListener(OnTogleLGPDChaged);
             buttonLGPD.GetComponent<Image>().color = invalidColor;
         }
 
-        return toggleLGPD.isOn;
+        private void OnTogleLGPDChaged(bool value)
+        {
+
+            if (toggleLGPD.isOn)
+            {
+                buttonLGPD.GetComponent<Image>().color = validColor;
+            }
+            else
+            {
+                buttonLGPD.GetComponent<Image>().color = invalidColor;
+            }
+            ValidateField("");
+        }
+
+        protected override void ValidateField(string value)
+        {
+
+            IsFieldValid(value);
+
+            FormatField(value);
+        }
+
+        protected override void FormatField(string value)
+        {
+
+        }
+
+        protected override bool IsFieldValid(string value)
+        {
+            if (!toggleLGPD.isOn)
+            {
+
+                Debug.Log("Você precisa aceitar o stermos de privacidade!");
+                buttonLGPD.GetComponent<Image>().color = invalidColor;
+            }
+
+            return toggleLGPD.isOn;
+        }
+
+
     }
-
-
 }

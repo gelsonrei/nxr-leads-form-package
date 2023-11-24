@@ -2,21 +2,23 @@
 
 //https://github.com/praeclarum/sqlite-net/wiki
 
-
-[Table("AppConfig")]
-public class AppConfig : Base
+namespace Nxr.FormLeads
 {
-    
-    [Column("key")]
-    public string Key { get; set; }
+    [Table("AppConfig")]
+    public class AppConfig : Base
+    {
 
-    [Column("value")]
-    public string Value { get; set; }
+        [Column("key")]
+        public string Key { get; set; }
 
-    [Column("type")]
-    public string Type { get; set; }
+        [Column("value")]
+        public string Value { get; set; }
+
+        [Column("type")]
+        public string Type { get; set; }
+
+    }
+
+
 
 }
-
-
-

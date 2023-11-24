@@ -2,35 +2,34 @@
 
 //https://github.com/praeclarum/sqlite-net/wiki
 
-
-[Table("Categoria")]
-public class Categoria : Base
+namespace Nxr.FormLeads
 {
-    
-    [PrimaryKey, AutoIncrement]
-    [Column("id")]
-    public int Id { get; set; }
+    [Table("Categoria")]
+    public class Categoria : Base
+    {
 
-    [Column("seq")]
-    public int Seq { get; set; }
+        [PrimaryKey, AutoIncrement]
+        [Column("id")]
+        public int Id { get; set; }
 
-    [Column("qtde")]
-    public int Qtde { get; set; }
+        [Column("seq")]
+        public int Seq { get; set; }
 
-    [Unique]
-    [Column("nome")]
-    public string Nome { get; set; }
+        [Column("qtde")]
+        public int Qtde { get; set; }
 
-    [Column("probabilidade")]
-    public int Probabilidade { get; set; }
+        [Unique]
+        [Column("nome")]
+        public string Nome { get; set; }
 
-    [Column("logoPath")]
-    public string LogoPath { get; set; }
+        [Column("probabilidade")]
+        public int Probabilidade { get; set; }
 
-    [Column("parabensPath")]
-    public string ParabensPath { get; set; }
+        [Column("logoPath")]
+        public string LogoPath { get; set; }
 
+        [Column("parabensPath")]
+        public string ParabensPath { get; set; }
+
+    }
 }
-
-
-

@@ -1,25 +1,27 @@
 using UnityEngine;
-
-public class GameManager : MonoBehaviour
+namespace Nxr.FormLeads
 {
-    void Update()
+    public class GameManager : MonoBehaviour
     {
-        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+        void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
             {
-                // Detecta Ctrl+Q pressionado e sai do aplicativo
-                EncerrarAplicacao();
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    // Detecta Ctrl+Q pressionado e sai do aplicativo
+                    EncerrarAplicacao();
+                }
             }
         }
-    }
-    
-    public void EncerrarAplicacao()
-    {
+
+        public void EncerrarAplicacao()
+        {
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
+        }
     }
 }

@@ -1,57 +1,57 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
-
-public class FieldsValidatorEmail : FieldsValidator
+namespace Nxr.FormLeads
 {
-
-
-    public override void DeleteLetter()
+    public class FieldsValidatorEmail : FieldsValidator
     {
-        string value = inputField.text;
+        public override void DeleteLetter()
+        {
+            string value = inputField.text;
 
-        if (value.Length != 0)
-        {
-            inputField.text = value.Remove(value.Length - 1, 1);
-        }
-    }
-
-    protected override void ValidateField(string value)
-    {
-        textStatus.gameObject.SetActive(false);
-        if (IsFieldValid(value))
-        {
-            Debug.Log("Email v�lido!");
-        }
-        else
-        {
-            if (value.Length > 0)
+            if (value.Length != 0)
             {
-                textStatus.text = "Digite um Email Válido";
-                textStatus.gameObject.SetActive(true);
-                Debug.Log("Email inv�lido!");
+                inputField.text = value.Remove(value.Length - 1, 1);
             }
         }
-        FormatField(value);
+
+        protected override void ValidateField(string value)
+        {
+            textStatus.gameObject.SetActive(false);
+            if (IsFieldValid(value))
+            {
+                Debug.Log("Email v�lido!");
+            }
+            else
+            {
+                if (value.Length > 0)
+                {
+                    textStatus.text = "Digite um Email Válido";
+                    textStatus.gameObject.SetActive(true);
+                    Debug.Log("Email inv�lido!");
+                }
+            }
+            FormatField(value);
+        }
+
+        protected override void FormatField(string value)
+        {
+            //sem formatação para email
+            string formattedCPF = value;
+            // Atualiza o texto do campo com o CPF formatado
+            inputField.text = formattedCPF;
+        }
+
+        protected override bool IsFieldValid(string value)
+        {
+            // Padrão de expressão regular para validar o e-mail
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            // Verifica se o e-mail corresponde ao padrão
+            fieldValid = Regex.IsMatch(value, pattern);
+            return fieldValid;
+        }
+
+
     }
-
-    protected override void FormatField(string value)
-    {
-        //sem formatação para email
-        string formattedCPF = value;
-        // Atualiza o texto do campo com o CPF formatado
-        inputField.text = formattedCPF;
-    }
-
-    protected override bool IsFieldValid(string value)
-    {
-        // Padrão de expressão regular para validar o e-mail
-        string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-
-        // Verifica se o e-mail corresponde ao padrão
-        fieldValid =  Regex.IsMatch(value, pattern);
-        return fieldValid;
-    }
-
-
 }
