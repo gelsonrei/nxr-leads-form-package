@@ -10,7 +10,7 @@ namespace Nxr.FormLeads
 
         public void Awake()
         {
-            resourceFolderPath = Application.dataPath + "/Resources/Data";
+            resourceFolderPath = Application.dataPath + "/NXR Leads Form Package/Resources/Data";
             filePath = resourceFolderPath + "/LeadsFormSettings.json";
         }
 

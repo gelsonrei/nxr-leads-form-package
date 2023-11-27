@@ -8,7 +8,7 @@ namespace Nxr.FormLeads
     public class DatabaseHandler
     {
 
-        private static readonly string resourceFolderPath = Application.dataPath + "/Resources";
+        private static readonly string resourceFolderPath = Application.dataPath + "/NXR Leads Form Package/Resources";
         private string dbUri = resourceFolderPath + "/Data/" + "FortuneWheel2.db";
         public SQLiteConnection dbConnection;
         static public DatabaseHandler instance;
